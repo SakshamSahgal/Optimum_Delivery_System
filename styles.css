@@ -1,0 +1,32 @@
+#selected
+{
+    fill: bisque;
+}
+
+
+.edge_class {    /* default edge */
+    fill: #000;
+    fill-rule: evenodd;
+  }
+
+  .highlight_Edge
+  {
+    fill: rgb(142, 50, 50);
+    fill-rule: evenodd;
+  }
+
+
+  .Nodes_class { /* default Node */
+    fill: #00bff3;
+  }
+
+  .highlight_node
+  {
+    fill: #057897;
+  }
+
+  #my_graph
+  { 
+      margin-left: 30%;
+      margin-top: 50px;
+  }
