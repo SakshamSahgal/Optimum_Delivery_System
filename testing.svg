@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff0202;
+      }
+    </style>
+  </defs>
+  <rect x="121" y="85" width="91" height="92" class="cls-1"/>
+  <ellipse cx="696.5" cy="501" rx="68.5" ry="80" class="cls-1"/>
+  <ellipse cx="233" cy="643" rx="70" ry="95" class="cls-1"/>
+</svg>
