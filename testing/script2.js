@@ -1,17 +1,8 @@
 
 var graph = [];
-var edge = [];
-
-edge.push(10);
-edge.push(20);
-edge.push(30);
-
-graph['a'] = new Array();
-graph['a'] = edge;
-
-edge.push(40);
-graph['b'] = new Array();
-graph['b'] = edge;
-
-console.log(graph);
-console.log("edge" + edge);
+graph[1] = new Array();
+graph[3] = new Array();
+graph[1].push([3,4]);
+graph[3].push([1,4]);
+graph[3].push([4,5]);
+console.table(graph);
