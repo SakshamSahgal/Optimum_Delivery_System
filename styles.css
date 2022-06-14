@@ -7,3 +7,9 @@
 body {
     background-color: 63D6C8;
   }
+
+
+  .highlight_node
+  {
+    fill: #7d7d7d;
+  }
