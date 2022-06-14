@@ -25,16 +25,36 @@ function construct_graph()
 
 construct_graph();  
 
+function Debug_Details(obj) //this function debugs the details of the object that is currently hovered
+{
+    if(obj != null)
+    {
+        document.getElementById("Current_Hovered_Vertex").innerHTML = "Currently Hovered Vertex  = " + obj.id;
+        var vertex = (obj.id).substring(5);
+        var connected_to_vertex = graph[vertex][0][0];
+        document.getElementById("Connected_by").innerHTML = "Connected By " + connected_to_vertex;
+    }
+    else
+    {
+        document.getElementById("Current_Hovered_Vertex").innerHTML = "Currently Hovered Vertex  = NULL";
+        document.getElementById("Connected_by").innerHTML = "Connected By = NULL";
+    }
+        
+}
+
+
 
 function Highlight(obj)
 {
     Click_audio.play();
     console.log("highlighted = " + obj.id);
     obj.classList.add("highlight_node");  
+    Debug_Details(obj);
 }
 
 function Un_Highlight(obj)
 {
     console.log("unhighlighted = " + obj.id);
     obj.classList.remove("highlight_node");  
+    Debug_Details(null);
 }

@@ -1,4 +1,4 @@
-#map{
+#MAP{
     margin-left: 23%;
     width: 840px;
     height: 730px;
@@ -12,4 +12,12 @@ body {
   .highlight_node
   {
     fill: #7d7d7d;
+  }
+
+  #Debug{
+    position: absolute;
+    border-style: dotted dashed solid double;
+    width: 300px;
+    height: 200px;
+    z-index: 1;
   }
