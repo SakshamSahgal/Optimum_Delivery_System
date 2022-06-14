@@ -1,5 +1,5 @@
 var graph = []; //variable that contails the weighted graph 
-var Click_audio = new Audio("Click.mp3");
+var Click_audio = new Audio("Select_Sound.wav");
 
 function construct_graph()
 {
