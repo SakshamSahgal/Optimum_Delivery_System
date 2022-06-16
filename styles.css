@@ -15,11 +15,16 @@ body {
   }
 
   #Debug{
+    margin-top: 5%;
     position: absolute;
     border-style: dotted dashed solid double;
     width: 300px;
     height: 200px;
-    z-index: 1;
+    z-index: 1;  
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
+    overflow: auto;
   }
 
 
@@ -27,3 +32,11 @@ body {
   {
     fill: #3a3a3a;
   }
+
+  #Selected_Nodes th, td {
+      border-radius: 10px;
+      border: 1px solid white;
+      background-color: #96D4D4;
+      text-align: center;
+    }
+  
