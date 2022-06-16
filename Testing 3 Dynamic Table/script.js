@@ -24,7 +24,7 @@ var table = document.getElementById("mytable");
 
 for(var i=0;i<5;i++)
 {
-// Create an empty <tr> element and add it to the 1st position of the table:
+// Create an empty <tr> element and add it to the i+1th position of the table:
 var row = table.insertRow(i+1);
 
 // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
