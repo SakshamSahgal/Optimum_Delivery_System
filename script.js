@@ -1,7 +1,10 @@
 var graph = []; //variable that contails the weighted graph 
+var selected_nodes = new Set(); //this set stores a list of selected nodes
 var Click_audio = new Audio("Select_Sound.wav");
+var Select_Node_Sound = new Audio("Select_Node_Sound.wav");
 
-function construct_graph()
+
+function construct_graph() //this function feeds the graph variable using data from the SVG
 {
     const Edges = document.querySelectorAll(`[id^="Edge"]`); //this querry selector extracts all elements with id's starting from Edges
     //console.log(Edges); 
@@ -32,17 +35,29 @@ function Debug_Details(obj) //this function debugs the details of the object tha
         document.getElementById("Current_Hovered_Vertex").innerHTML = "Currently Hovered Vertex  = " + obj.id;
         var vertex = (obj.id).substring(5);
         var connected_to_vertex = graph[vertex][0][0];
-        document.getElementById("Connected_by").innerHTML = "Connected By " + connected_to_vertex;
+        document.getElementById("Connected_by").innerHTML = "Connected By Node_" + connected_to_vertex;
     }
     else
     {
         document.getElementById("Current_Hovered_Vertex").innerHTML = "Currently Hovered Vertex  = NULL";
         document.getElementById("Connected_by").innerHTML = "Connected By = NULL";
     }
-        
 }
-
-
+function Clicked(obj)
+{
+    if(selected_nodes.has(obj.id)) //if already selected
+    {
+        selected_nodes.delete(obj.id); //delete it from the set
+        obj.classList.remove("select_node"); //remove the css property of selected
+        Select_Node_Sound.play(); //Select Node play
+    }
+    else //if not not already selected
+    {
+        selected_nodes.add(obj.id); //add it to the list
+        obj.classList.add("select_node"); //add the css property of selected
+        Select_Node_Sound.play(); //Select Node play
+    }
+}
 
 function Highlight(obj)
 {
@@ -57,4 +72,12 @@ function Un_Highlight(obj)
     console.log("unhighlighted = " + obj.id);
     obj.classList.remove("highlight_node");  
     Debug_Details(null);
+}
+
+void Get_Row_No_of_table_with_Data(data)
+{
+    for (var i = 1; i < table.rows.length;i++) {
+        var data = table.rows[i].cells[0].innerHTML;
+        console.log(data);     
+    }
 }

@@ -21,3 +21,9 @@ body {
     height: 200px;
     z-index: 1;
   }
+
+
+  .select_node
+  {
+    fill: #3a3a3a;
+  }
