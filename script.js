@@ -24,7 +24,7 @@ function insert_row_with_data(data) //function that inserts a row with passed da
     cell.innerHTML = data;
 }
 
-function delete_row_with_data(data)
+function delete_row_with_data(data) //this function deletes a row which matched the content of the data passed
 {
     var table = document.getElementById("Selected_Nodes");
     var index = Get_Row_No_of_table_with_Data(data);

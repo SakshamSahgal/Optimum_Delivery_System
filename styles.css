@@ -15,7 +15,7 @@ body {
   }
 
   #Debug{
-    margin-top: 5%;
+    border-radius: 10px;
     position: absolute;
     border-style: dotted dashed solid double;
     width: 300px;
@@ -23,8 +23,9 @@ body {
     z-index: 1;  
     display: flex;
     flex-direction: column;
-    min-height: 70vh;
+    min-height: 97vh;
     overflow: auto;
+    background-color:#e8e0d77e
   }
 
 
