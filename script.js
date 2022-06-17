@@ -72,6 +72,7 @@ function Debug_Details(obj) //this function debugs the details of the object tha
         document.getElementById("Current_Hovered_Vertex").innerHTML = "Currently Hovered Vertex  = NULL";
         document.getElementById("Connected_by").innerHTML = "Connected By = NULL";
     }
+    document.getElementById("no_of_Drivers_debug").innerHTML = "Number of Drivers = " + no_of_drivers_selected;
 }
 function Clicked(obj)
 {
@@ -172,10 +173,12 @@ function slider_update() //this function updates the state of the driver slider
     document.getElementById("slider_min").innerHTML = driver_slider.min; //updating minimum value on control pallet
     document.getElementById("slider_max").innerHTML = driver_slider.max; //updating maximum value on control pallet
     document.getElementById("no_of_drivers").innerHTML = "No of drivers Selected = " + no_of_drivers_selected; //updating no of drivers on display pallet
+    document.getElementById("no_of_Drivers_debug").innerHTML = "Number of Drivers = " + no_of_drivers_selected;
 }
 
 function on_slider_value_change(obj)
 {
     no_of_drivers_selected = obj.value;
     document.getElementById("no_of_drivers").innerHTML = "No of drivers Selected = " + obj.value;
+    document.getElementById("no_of_Drivers_debug").innerHTML = "Number of Drivers = " + no_of_drivers_selected;
 }
