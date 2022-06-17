@@ -6,12 +6,25 @@
     <link rel="stylesheet" href="styles.css">
     <div id="Debug">
         <h3 align="Center">DEBUG</h3>
-        <p align="Center" id="Current_Hovered_Vertex"></p>
-        <p align="Center" id="Connected_by"></p>
-        <table id="Selected_Nodes">
+        <p align="Center" id="Current_Hovered_Vertex"> Currently Hovered Vertex  = NULL</p>
+        <p align="Center" id="Connected_by">Connected By = NULL</p>
+        <p align="Center" id="Source">Source : NULL</p>
+        <table id="Selected_Nodes_table">
             <th>Currently Selected Nodes</th>
         </table>
     </div>
+
+    <div id="Control_Pallet">
+        <div id="Selection_type_pallet">
+            <table id="Selection_type_table">
+                <th> Selection Type </th>
+                <tr><td> <input type="radio" name="selection_type" id="Delivery_location" onclick="on_selection_type_change(this)" checked> Select Delivery Locations </td></tr>
+                <tr><td> <input type="radio" name="selection_type" id="Source" onclick="on_selection_type_change(this)"> Select Source </td></tr>
+            </table>
+            
+        </div>
+    </div>
+
     <svg viewBox="0 0 1090 872" fill="none" xmlns="http://www.w3.org/2000/svg" id="MAP">
         <g id="MAP">
         <g id="Props">

@@ -14,6 +14,11 @@ body {
     fill: #7d7d7d;
   }
 
+  .Source_Node
+  {
+    fill: greenyellow;
+  }
+
   #Debug{
     border-radius: 10px;
     position: absolute;
@@ -28,16 +33,46 @@ body {
     background-color:#e8e0d77e
   }
 
+  #Control_Pallet
+  {
+    border-radius: 10px;
+    position: absolute;
+    border-style: dotted dashed solid double;
+    width: 300px;
+    height: 200px;
+    margin-left: 79%;
+    z-index: 1;  
+    display: flex;
+    flex-direction: column;
+    min-height: 97vh;
+    overflow: auto;
+    background-color:#e8e0d77e
+  }
 
   .select_node
   {
     fill: #3a3a3a;
   }
 
-  #Selected_Nodes th, td {
+  #Selection_type_pallet
+  {
+    margin-top: 15%;
+    margin-left: 1%;
+  }
+  #Selected_Nodes_table th, td 
+  {
       border-radius: 10px;
       border: 1px solid white;
       background-color: #96D4D4;
       text-align: center;
-    }
+  }
+
   
+  #Selection_type_table th , td
+  {
+      border-radius: 10px;
+      border: 1px solid rgb(255, 255, 255);
+      background-color: #96D4D4;
+      text-align: center;
+      width: 300px;
+  }
