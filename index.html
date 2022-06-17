@@ -5,10 +5,12 @@
 <body>
     <link rel="stylesheet" href="styles.css">
     <div id="Debug">
-        <h3 align="Center">DEBUG</h3>
-        <p align="Center" id="Current_Hovered_Vertex"> Currently Hovered Vertex  = NULL</p>
-        <p align="Center" id="Connected_by">Connected By = NULL</p>
-        <p align="Center" id="Source">Source : NULL</p>
+        <div>
+            <h3 align="Center">DEBUG</h3>
+            <p align="Center" id="Current_Hovered_Vertex"> Currently Hovered Vertex  = NULL</p>
+            <p align="Center" id="Connected_by">Connected By = NULL</p>
+            <p align="Center" id="Source">Source : NULL</p>
+        </div>
         <table id="Selected_Nodes_table">
             <th>Currently Selected Nodes</th>
         </table>
@@ -17,8 +19,10 @@
     <div id="Control_Pallet">
         <div>
             <table>
-                <tr><td>Source Selected</td> <td> <img src="Cross.png" alt="" id="src_selected_img"></td></tr>
-                <tr><td> Delivery location Selected : </td> <td id = "No_of_Delivery_Locations">0</td> </tr>
+                <tr><td>Source Selected</td> <td colspan="3"> <img src="Cross.png" alt="" id="src_selected_img"></td></tr>
+                <tr><td> Delivery location Selected : </td> <td id = "No_of_Delivery_Locations" colspan="3">0</td> </tr>
+                <tr> <td> No of Drivers : </td> <td id="slider_min">0</td> <td> <input type="range" name="Drivers_slider" id="Drivers_slider" min="0" max="0" disabled onchange="on_slider_value_change(this)"></td> <td id="slider_max">0</td></tr>
+                <tr><td colspan="4" id="no_of_drivers">No of drivers Selected = 0</td></tr>
             </table>
         </div>
         <div id="Selection_type_pallet">

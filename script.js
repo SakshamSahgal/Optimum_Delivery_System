@@ -4,7 +4,8 @@ var Click_audio = new Audio("Select_Sound.wav");
 var Select_Node_Sound = new Audio("Select_Node_Sound.wav");
 var current_selection_type = "Delivery_location"; //this variable stores the current selection type from checkbox (by default it is delivery locations)
 var Source = null; //this variable stores the current source
-var no_of_delivery_locations_selected = 0;
+var no_of_delivery_locations_selected = 0; //variable that tells the no of delivery_locations selected
+var no_of_drivers_selected = 0;
 
 function Get_Row_No_of_table_with_Data(data) //function searches the table for the data and returns the row number of the table where it finds the data(rows start with 0 , with heading being row 0) 
 {
@@ -126,6 +127,7 @@ function Clicked(obj)
         }
              
     }
+    slider_update();
 }
 
 function Highlight(obj) //function that is called when mouse enters over from a selectable node
@@ -148,4 +150,32 @@ function on_selection_type_change(obj) //function called when selection type rad
 {
     console.log(obj.id);
     current_selection_type = obj.id; //update the current selection type
+}
+
+function slider_update() //this function updates the state of the driver slider 
+{
+    var driver_slider = document.getElementById("Drivers_slider"); 
+    if(no_of_delivery_locations_selected > 0 && Source != null) //if possible state then enable the sider
+        {
+            driver_slider.min = 1; //setting slider minimum value
+            driver_slider.max = no_of_delivery_locations_selected; //setting slider max value
+            driver_slider.disabled = false; //enabling slider
+            no_of_drivers_selected = driver_slider.value; //updating no of drivers
+        }
+    else //if slider needs to be disabled
+    {
+            driver_slider.min = 0;  //setting slider minimum value
+            driver_slider.max = no_of_delivery_locations_selected; //setting slider max value
+            driver_slider.disabled = true;   //disabling the slider
+            no_of_drivers_selected = 0;
+    }
+    document.getElementById("slider_min").innerHTML = driver_slider.min; //updating minimum value on control pallet
+    document.getElementById("slider_max").innerHTML = driver_slider.max; //updating maximum value on control pallet
+    document.getElementById("no_of_drivers").innerHTML = "No of drivers Selected = " + no_of_drivers_selected; //updating no of drivers on display pallet
+}
+
+function on_slider_value_change(obj)
+{
+    no_of_drivers_selected = obj.value;
+    document.getElementById("no_of_drivers").innerHTML = "No of drivers Selected = " + obj.value;
 }
