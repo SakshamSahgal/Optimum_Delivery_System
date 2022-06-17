@@ -4,6 +4,7 @@ var Click_audio = new Audio("Select_Sound.wav");
 var Select_Node_Sound = new Audio("Select_Node_Sound.wav");
 var current_selection_type = "Delivery_location"; //this variable stores the current selection type from checkbox (by default it is delivery locations)
 var Source = null; //this variable stores the current source
+var no_of_delivery_locations_selected = 0;
 
 function Get_Row_No_of_table_with_Data(data) //function searches the table for the data and returns the row number of the table where it finds the data(rows start with 0 , with heading being row 0) 
 {
@@ -85,6 +86,8 @@ function Clicked(obj)
                 obj.classList.remove("select_node"); //remove the css property of selected
                 Select_Node_Sound.play(); //Select Node play
                 delete_row_with_data(obj.id);
+                no_of_delivery_locations_selected--;
+                document.getElementById("No_of_Delivery_Locations").innerHTML = no_of_delivery_locations_selected;
             }
             else //if not not already selected
             {
@@ -92,9 +95,11 @@ function Clicked(obj)
                 obj.classList.add("select_node"); //add the css property of selected
                 Select_Node_Sound.play(); //Select Node play
                 insert_row_with_data(obj.id);
+                no_of_delivery_locations_selected++;
+                document.getElementById("No_of_Delivery_Locations").innerHTML = no_of_delivery_locations_selected;
             }
         }
-    } 
+    }
     else //for selecting Source
     {
         if(selected_nodes.has(obj.id))
@@ -104,11 +109,13 @@ function Clicked(obj)
             if(obj.id == Source) //if we reclicked an already selected source then it should be removed as source
             {
                 Source = null; //updating the Source
+                document.getElementById("src_selected_img").src = "Cross.png";
                 document.getElementById("Source").innerHTML = "Source : NULL";
                 obj.classList.remove("Source_Node");
             }
             else //A new source is selected
             {
+                document.getElementById("src_selected_img").src = "Tick.png";
                 if(Source != null) //if previously a source was selected
                     document.getElementById(Source).classList.remove("Source_Node"); //then remove it's source node CSS property
                 
