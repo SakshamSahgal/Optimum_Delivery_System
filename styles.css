@@ -76,3 +76,34 @@ body {
       text-align: center;
       width: 300px;
   }
+
+  #overlay
+  {
+    height: 100%;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    /*z-index: 1;  Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgba(7, 7, 7, 0.55); /* Black w/opacity */
+    backdrop-filter: blur(6px);
+    z-index: 2;
+  }
+
+  #Welcome_Pallet
+  {
+    position: relative;
+      border-radius: 10px;
+      width: 25%;
+      height: 25%;
+      background-color: rgba(255, 255, 255, 0.329);
+      margin-left: 40%;
+      margin-top: 20%;
+  }
+
+  #start_button_pallet
+  {
+    position: absolute;
+    margin-top: 20%;
+    margin-left: 40%;
+  }

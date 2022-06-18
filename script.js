@@ -182,3 +182,8 @@ function on_slider_value_change(obj)
     document.getElementById("no_of_drivers").innerHTML = "No of drivers Selected = " + obj.value;
     document.getElementById("no_of_Drivers_debug").innerHTML = "Number of Drivers = " + no_of_drivers_selected;
 }
+
+function reveal() //function that removes the translucent overlay and reveals the website
+{
+    document.getElementById("overlay").hidden = true;
+}
