@@ -6,6 +6,7 @@ var current_selection_type = "Delivery_location"; //this variable stores the cur
 var Source = null; //this variable stores the current source
 var no_of_delivery_locations_selected = 0; //variable that tells the no of delivery_locations selected
 var no_of_drivers_selected = 0;
+var adjacency_matrix = new Array(199); //adjacency matrix to store graph and apply floyd warshal
 
 function Get_Row_No_of_table_with_Data(data) //function searches the table for the data and returns the row number of the table where it finds the data(rows start with 0 , with heading being row 0) 
 {
@@ -57,6 +58,31 @@ function construct_graph() //this function feeds the graph variable using data f
 }
 
 construct_graph();  
+
+function adjacency_list_to_matrix() //this function converts adjacency list to matrix for floyd warshal calculation
+{
+    var inf = 1000000000;
+    for(var i=0;i<199;i++)
+        adjacency_matrix[i] = new Array(199); //initializing the 2d array
+
+        for(var i=0;i<199;i++)
+        {
+            for(var j=0;j<199;j++)
+                (i == j) ? adjacency_matrix[i][j] = 0 : adjacency_matrix[i][j] = inf; //initializing with default values
+        }
+        
+        for(auto i:graph)
+        {
+            for(auto j:i.second)
+            {
+                adj_matrix[i.first][j.first] = j.second;
+                adj_matrix[j.first][i.first] = j.second;
+            }
+
+        }
+       
+
+}
 
 function Debug_Details(obj) //this function debugs the details of the object that is currently hovered
 {
