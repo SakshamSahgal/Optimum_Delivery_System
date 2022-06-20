@@ -3,8 +3,8 @@
     <title>Graph</title>
 </head>
 <body>
-    <link rel="stylesheet" href="styles.css">
-    
+    <link rel="stylesheet" href="CSS/Graphics_update.css">
+    <link rel="stylesheet" href="CSS/UI.css">
     <div id="overlay">
         <div id="Welcome_Pallet">
             <div>
@@ -47,7 +47,7 @@
                 <tr><td> <input type="radio" name="selection_type" id="Source" onclick="on_selection_type_change(this)"> Select Source </td></tr>
             </table>
             <div id="Start_Simulation">
-                <button type="button" onclick="start_Simulation()" style="font-size:20px;"> start Simulation</button>
+                <button type="button" onclick="find_optimum_paths()" style="font-size:20px;"> Find Optimum Paths</button>
             </div>
         </div>
     </div>
@@ -493,5 +493,6 @@
         <script src="Scripts/GUI_Update_Script.js"> </script>
         <script src="Scripts/Floyd_Warshal_Script.js"></script>
         <script src="Scripts/graph_visualize.js"></script>
+        <script src="Scripts/clustering.js"></script>
 </body>
 </html>

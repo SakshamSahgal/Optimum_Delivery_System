@@ -25,10 +25,6 @@ function delete_row_with_data(data) //this function deletes a row which matched 
 }
 
 
-
-
-
-
 function Debug_Details(obj) //this function debugs the details of the object that is currently hovered
 {
     if (obj != null) {
@@ -152,4 +148,5 @@ function reveal() //function that removes the translucent overlay and reveals th
 {
     document.getElementById("overlay").hidden = true;
 }
+
 
