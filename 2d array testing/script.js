@@ -34,6 +34,19 @@ console.table(graph);
 
 for(var i=0;i<=5;i++)
 {
-    for(const v2 of graph[i])
-        console.log(i + " connect " + v2[0] + " with " + v2[1]);
+   
+    for(const v of graph[i])
+    {
+        var v1 = i;
+        var v2 = v[0];
+        var w = v[1];
+        console.log(v1 + " connect " + v2 + " with " + w);
+
+    }
+        
 }
+
+var a = 35;
+var b = 10;
+var c = a+b;
+console.log(c);
