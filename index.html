@@ -34,7 +34,7 @@
     <div id="Control_Pallet">
         <div>
             <table>
-                <tr><td>Source Selected</td> <td colspan="3"> <img src="Cross.png" alt="" id="src_selected_img"></td></tr>
+                <tr><td>Source Selected</td> <td colspan="3"> <img src="GUI_Resources/Cross.png" alt="" id="src_selected_img"></td></tr>
                 <tr><td> Delivery location Selected : </td> <td id = "No_of_Delivery_Locations" colspan="3">0</td> </tr>
                 <tr> <td> No of Drivers : </td> <td id="slider_min">0</td> <td> <input type="range" name="Drivers_slider" id="Drivers_slider" min="0" max="0" disabled onchange="on_slider_value_change(this)"></td> <td id="slider_max">0</td></tr>
                 <tr><td colspan="4" id="no_of_drivers">No of drivers Selected = 0</td></tr>
@@ -489,6 +489,8 @@
         </g>
         </g>
         </svg>
-        <script src="script.js"> </script>
+        <script src="Scripts/global_variables.js"></script>
+        <script src="Scripts/GUI_Update_Script.js"> </script>
+        <script src="Scripts/Floyd_Warshal_Script.js"></script>
 </body>
 </html>

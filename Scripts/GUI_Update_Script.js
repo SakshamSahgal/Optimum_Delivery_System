@@ -1,13 +1,3 @@
-var graph = []; //variable that contails the weighted graph 
-var selected_nodes = new Set(); //this set stores a list of selected nodes
-var Click_audio = new Audio("Select_Sound.wav");
-var Select_Node_Sound = new Audio("Select_Node_Sound.wav");
-var current_selection_type = "Delivery_location"; //this variable stores the current selection type from checkbox (by default it is delivery locations)
-var Source = null; //this variable stores the current source
-var no_of_delivery_locations_selected = 0; //variable that tells the no of delivery_locations selected
-var no_of_drivers_selected = 0;
-
-
 function Get_Row_No_of_table_with_Data(data) //function searches the table for the data and returns the row number of the table where it finds the data(rows start with 0 , with heading being row 0) 
 {
     var table = document.getElementById("Selected_Nodes_table");
@@ -58,112 +48,7 @@ function construct_graph() //this function feeds the graph variable using data f
 
 construct_graph();
 
-class Shortest_path_finder {
 
-    constructor(graph) {
-        this.n = 199; //no of rows in the adj matrix (max vertex number + 1)
-        this.graph = graph;
-        this.adjacency_matrix = new Array(this.n);
-        this.all_pair_shortest_distance = new Array(this.n);
-        this.all_pair_shortest_distance_intermediate_vertex = new Array(this.n);
-        this.adjacency_list_to_matrix();
-        this.Apply_Floyd_Warshal();
-    }
-
-    adjacency_list_to_matrix() //this function converts adjacency list to matrix for floyd warshal calculation
-    {
-    var inf =  -1;
-    for (var i = 0; i < this.n; i++)
-        this.adjacency_matrix[i] = new Array(this.n); //initializing the 2d array
-
-    for (var i = 0; i < this.n; i++) {
-        for (var j = 0; j < this.n; j++)
-            (i == j) ? this.adjacency_matrix[i][j] = 0 : this.adjacency_matrix[i][j] = inf; //initializing with default values
-    }
-
-    for (var i = 1; i < this.n; i++) {
-        for (const v of this.graph[i]) {
-            var v1 = i;
-            var v2 = v[0];
-            var w = v[1];
-            console.log(v1 + " connect " + v2 + " with " + w);
-            this.adjacency_matrix[v1][v2] = w;
-            this.adjacency_matrix[v2][v1] = w;
-        }
-    }
-    // console.log("adjacency_matrix -> ");
-    // console.table(this.adjacency_matrix);
-}
-
- Apply_Floyd_Warshal() {
-    var inf = -1;
-
-    this.all_pair_shortest_distance = this.adjacency_matrix;
-    // console.log("all_pair_shortest_distance before - >");
-    // console.table(this.all_pair_shortest_distance);
-
-    for (var i = 0; i < this.n; i++)
-    this.all_pair_shortest_distance_intermediate_vertex[i] = new Array(this.n); //initializing 
-
-    for (var i = 0; i < this.n; i++)
-        for (var j = 0; j < this.n; j++)
-        this.all_pair_shortest_distance_intermediate_vertex[i][j] = -1;
-
-    for (var k = 1; k < this.n; k++) {
-        for (var i = 1; i < this.n; i++) {
-            for (var j = 1; j < this.n; j++) {
-                if (this.all_pair_shortest_distance[i][k] != inf && this.all_pair_shortest_distance[k][j] != inf) {
-                    if ( this.all_pair_shortest_distance[i][j] == inf || this.all_pair_shortest_distance[i][j] > (this.all_pair_shortest_distance[i][k] + this.all_pair_shortest_distance[k][j])) {
-                        this.all_pair_shortest_distance[i][j] = this.all_pair_shortest_distance[i][k] + this.all_pair_shortest_distance[k][j];
-                        this.all_pair_shortest_distance[j][i] = this.all_pair_shortest_distance[i][k] + this.all_pair_shortest_distance[k][j];
-                        this.all_pair_shortest_distance_intermediate_vertex[i][j] = k;
-                        this.all_pair_shortest_distance_intermediate_vertex[j][i] = k;
-                    }
-                }
-            }
-        }
-    }
-
-    // console.log("all_pair_shortest_distance after - >");
-    // console.table(this.all_pair_shortest_distance);
-    // console.log("all_pair_shortest_distance intermediate vertex - >");
-    // console.table(this.all_pair_shortest_distance_intermediate_vertex);
-
-}
-
- calc_path(v1,v2) //calculates the shorted path between two vertices as a array
-{
-    if( this.all_pair_shortest_distance_intermediate_vertex[v1][v2] == -1) //if they are not directly connected 
-    {
-        console.log("yes " + -1 + "btw" + v1 + " " + v2);
-        var ep = new Array();
-        return ep;
-    }
-    else
-    {
-        var mid = this.all_pair_shortest_distance_intermediate_vertex[v1][v2];
-        var a = this.calc_path(v1,mid);
-        var b = this.calc_path(mid,v2);
-        a = a.concat(mid);
-        a = a.concat(b);
-        return a;
-    }
-}
-
- get_path(v1,v2) //this function returns optimal path between two vertices 
-{
-    var path = new Array();
-    path.push(v1);
-    var calc = this.calc_path(v1,v2);
-    path = path.concat(calc);
-    path.push(v2);
-    return path;
-}
-
-};
-var this_graph = new Shortest_path_finder(graph);
-
-console.log(this_graph.get_path(2,6)); 
 
 function Debug_Details(obj) //this function debugs the details of the object that is currently hovered
 {
@@ -213,13 +98,13 @@ function Clicked(obj) {
             if (obj.id == Source) //if we reclicked an already selected source then it should be removed as source
             {
                 Source = null; //updating the Source
-                document.getElementById("src_selected_img").src = "Cross.png";
+                document.getElementById("src_selected_img").src = cross_img;
                 document.getElementById("Source").innerHTML = "Source : NULL";
                 obj.classList.remove("Source_Node");
             }
             else //A new source is selected
             {
-                document.getElementById("src_selected_img").src = "Tick.png";
+                document.getElementById("src_selected_img").src = Tick_img;
                 if (Source != null) //if previously a source was selected
                     document.getElementById(Source).classList.remove("Source_Node"); //then remove it's source node CSS property
 
@@ -251,7 +136,7 @@ function Un_Highlight(obj) //function that is called when mouse leaves over from
 
 function on_selection_type_change(obj) //function called when selection type radio button changes value
 {
-    console.log(obj.id);
+    //console.log(obj.id);
     current_selection_type = obj.id; //update the current selection type
 }
 
