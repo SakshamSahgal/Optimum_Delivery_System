@@ -67,6 +67,17 @@ body {
       text-align: center;
   }
 
+  .visit_edge
+  {
+    fill: #ff0000;
+    stroke:#3a3a3a;
+  }
+
+  .visit_Node
+  {
+    fill: #ff0000;
+  }
+
   
   #Selection_type_table th , td
   {

@@ -1,3 +1,41 @@
+
+
+
+function construct_graph() //this function feeds the graph variable using data from the SVG
+{
+    const Edges = document.querySelectorAll(`[id^="Edge"]`); //this querry selector extracts all elements with id's starting from Edges
+    //console.log(Edges); 
+
+    for (var i = 0; i <= 198; i++) //initialising empty rows to the array
+        graph[i] = new Array();
+
+    for (const edge of Edges) {
+        const details = (edge.id).split("_"); //splitting the different parts of id into a string array
+        //console.log("id  = " + edge.id + "splited details = " + details);
+        var Edge_no = parseInt(details[1]);
+        var vertex_a = details[2];
+        var vertex_b = details[3];
+        var weight = details[4];
+        
+        //console.log(Edge_no + " edge joins " + vertex_a + " " + vertex_b + " with weight " + weight);
+        
+        Edge_List.set(Edge_no,parseInt(vertex_a),parseInt(vertex_b));
+        Edge_List.set(Edge_no,parseInt(vertex_b),parseInt(vertex_a));
+        
+        // var setteda = toString(Edge_List.get(vertex_a,vertex_b));
+        // var settedb = toString(Edge_List.get(vertex_b,vertex_a));
+        // console.log("Edgelist[" + vertex_a + "][" + vertex_b + "] = " + setteda);
+        // console.log("Edgelist[" + vertex_b + "][" + vertex_a + "] = " + settedb);
+        
+        graph[vertex_a].push([vertex_b, weight,Edge_no]);
+        graph[vertex_b].push([vertex_a, weight,Edge_no]); //feeding the vertices to the undirected weighted graph
+    }
+    console.table(graph);
+}
+
+construct_graph();
+
+
 class Shortest_path_finder {
 
     constructor(graph) {
@@ -23,9 +61,9 @@ class Shortest_path_finder {
                 var v1 = i;
                 var v2 = v[0];
                 var w = v[1];
-                console.log(v1 + " connect " + v2 + " with " + w);
-                this.adjacency_matrix.set(2,v1,v2);
-                this.adjacency_matrix.set(2,v2,v1);
+                //console.log(v1 + " connect " + v2 + " with " + w);
+                this.adjacency_matrix.set(w,v1,v2);
+                this.adjacency_matrix.set(w,v2,v1);
             }
         }
     }
