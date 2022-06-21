@@ -33,24 +33,30 @@ console.log(a.get(6));
 
 
 
-class Typed_2D_Array
+class Typed_2D_Array //a class for creating a typed 2d array (this array only stores integers and is stored contigously in memory just like in c++)
 {
     constructor (row,col,default_val)
     {
         this.size = row*col;
         this.row = row;
         this.col = col;
-        this.a = new Int16Array(row*col).fill(default_val);;
+        this.a = new Int16Array(row*col).fill(default_val);
+        this.i;
+        this.j;
     }
 
     get(i,j)
     {
-        return (this.a[(i*(this.col) + j)]);
+        this.i = parseInt(i);
+        this.j = parseInt(j);
+        return ( this.a[ ( (this.i)*(this.col) + (this.j) ) ] );
     }
 
     set(val,i,j)
     {
-        this.a[(i*(this.col) + j)] = val;
+        this.i = parseInt(i);
+        this.j = parseInt(j);
+        this.a[ ( (this.i)*(this.col) + (this.j) ) ] = val;
     }
 
     printer()
@@ -60,12 +66,10 @@ class Typed_2D_Array
             var str = "";
             for(var j=0;j<this.col;j++)
                 str += (this.a[(i*(this.col) + j)]) + " ";
-            
             console.log(str);
         }
     }
 };
-
 
 var arr = new Typed_2D_Array(3,4,0);
 
@@ -77,4 +81,4 @@ for(var i=0;i<3;i++)
 
 arr.printer();
 
-console.log(arr.get(0,3));
+console.log(arr.get(0,"3"));

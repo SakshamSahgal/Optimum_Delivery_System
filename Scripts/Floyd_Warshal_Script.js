@@ -19,8 +19,8 @@ function construct_graph() //this function feeds the graph variable using data f
         
         //console.log(Edge_no + " edge joins " + vertex_a + " " + vertex_b + " with weight " + weight);
         
-        Edge_List.set(Edge_no,parseInt(vertex_a),parseInt(vertex_b));
-        Edge_List.set(Edge_no,parseInt(vertex_b),parseInt(vertex_a));
+        Edge_List.set(Edge_no,vertex_a,vertex_b);
+        Edge_List.set(Edge_no,vertex_b,vertex_a);
         
         // var setteda = toString(Edge_List.get(vertex_a,vertex_b));
         // var settedb = toString(Edge_List.get(vertex_b,vertex_a));
