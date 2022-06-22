@@ -37,8 +37,8 @@ class Visualize
     }    
 };
 
-var vis = new Visualize();
-vis.show_path(this_graph.get_path(2,35));
+var vis = new Visualizes();
+//vis.show_path(this_graph.get_path(2,35));
 
 
 

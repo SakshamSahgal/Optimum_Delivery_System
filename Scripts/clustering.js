@@ -28,7 +28,6 @@ class Greedy_Cluster {
 
         for (var i of this.delivery_locations) {
             for (var j of this.delivery_locations) {
-                
                 if (i != j) {
                     console.log(" i = " + i + " j = " + j + " distance = " + this_graph.all_pair_shortest_distance.get(i,j) );    
                     if (this_graph.all_pair_shortest_distance.get(i,j) > maxx_distance) {
@@ -55,10 +54,7 @@ class Greedy_Cluster {
             var max_distance = -1;
             var farthest_vertex = -1;
 
-            for (const i of this.delivery_locations) {
-                //console.log("i = " + i);
-                if (!this.cluster_initializers.has(i)) // this means that this delivery vertex is currently not a cluster vertex
-                {
+            for (const i of this.rem_delivery_locations) {
                     var dist = 0;
                     for (const j of this.cluster_initializers) {
                         //console.log("distance of " + i + " from " + j + " is = " + this_graph.all_pair_shortest_distance.get(parseInt(i),parseInt(j)) + " with sqrt = " + Math.sqrt(this_graph.all_pair_shortest_distance.get(parseInt(i),parseInt(j))));
@@ -69,9 +65,6 @@ class Greedy_Cluster {
                         max_distance = dist;
                         farthest_vertex = i;
                     }
-
-                   // console.log(dist);
-                }
             }
             this.cluster_initializers.add(farthest_vertex);
             this.rem_delivery_locations.delete(farthest_vertex);
@@ -92,6 +85,7 @@ class Greedy_Cluster {
             var mini_distane = 10000;
             var closest_source = -1;
             const [first] = this.rem_delivery_locations;
+
             for (const i of this.cluster_initializers) {
 
                 var dist = this_graph.all_pair_shortest_distance.get(i,first); //distance btw ith cluster initilizer and first delivery location in the rem list
@@ -130,13 +124,15 @@ class Greedy_Cluster {
 
 
 
-var Calc_cluster = new Greedy_Cluster();
 
 function find_optimum_paths() {
     //set_dummy_Data();
     if (Source != null && no_of_drivers_selected >= 2 && no_of_delivery_locations_selected >= 2) {
         //alert("yes we can go");
+        var Calc_cluster = new Greedy_Cluster();
         Calc_cluster.calc_cluster_initilizers();
+        document.getElementById("Clusters_generated_table").hidden = false;
+        display_clusters_generated(Calc_cluster);
     }
     else
         alert("Please make sure you have selected - \n> Atleast two delivery locations \n> Atleast two drivers \n> A source");
