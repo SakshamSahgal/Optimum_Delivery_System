@@ -134,11 +134,11 @@ var Calc_cluster = new Greedy_Cluster();
 
 function find_optimum_paths() {
     //set_dummy_Data();
-    if (Source != null && no_of_drivers_selected >= 1 && no_of_delivery_locations_selected >= 1) {
+    if (Source != null && no_of_drivers_selected >= 2 && no_of_delivery_locations_selected >= 2) {
         //alert("yes we can go");
         Calc_cluster.calc_cluster_initilizers();
     }
     else
-        alert("Please make sure you have selected atleast one delivery location , driver and source");
+        alert("Please make sure you have selected - \n> Atleast two delivery locations \n> Atleast two drivers \n> A source");
 }
 

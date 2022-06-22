@@ -1,6 +1,6 @@
-function Get_Row_No_of_table_with_Data(data) //function searches the table for the data and returns the row number of the table where it finds the data(rows start with 0 , with heading being row 0) 
+function Get_Row_No_of_table_with_Data(data, id) //function searches the table for the data and returns the row number of the table where it finds the data(rows start with 0 , with heading being row 0) 
 {
-    var table = document.getElementById("Selected_Nodes_table");
+    var table = document.getElementById(id);
     for (var i = 1; i < table.rows.length; i++) {
         var val = table.rows[i].cells[0].innerHTML;
         if (data == val)
@@ -9,18 +9,18 @@ function Get_Row_No_of_table_with_Data(data) //function searches the table for t
     return -1;
 }
 
-function insert_row_with_data(data) //function that inserts a row with passed data
+function insert_row_with_data(data, id) //function that inserts a row with passed data
 {
-    var table = document.getElementById("Selected_Nodes_table");
+    var table = document.getElementById(id);
     var row = table.insertRow(1); //inserting at the first index (since index 0 is heading)
     var cell = row.insertCell(0); //inserting at the 0th col (starting)
     cell.innerHTML = data;
 }
 
-function delete_row_with_data(data) //this function deletes a row which matched the content of the data passed
+function delete_row_with_data(data, id) //this function deletes a row which matched the content of the data passed
 {
-    var table = document.getElementById("Selected_Nodes_table");
-    var index = Get_Row_No_of_table_with_Data(data);
+    var table = document.getElementById(id);
+    var index = Get_Row_No_of_table_with_Data(data, id);
     table.deleteRow(index);
 }
 
@@ -50,7 +50,7 @@ function Clicked(obj) {
                 selected_nodes.delete(obj.id); //delete it from the set
                 obj.classList.remove("select_node"); //remove the css property of selected
                 Select_Node_Sound.play(); //Select Node play
-                delete_row_with_data(obj.id);
+                delete_row_with_data(obj.id, "Selected_Nodes_table");
                 no_of_delivery_locations_selected--;
                 document.getElementById("No_of_Delivery_Locations").innerHTML = no_of_delivery_locations_selected;
             }
@@ -59,7 +59,7 @@ function Clicked(obj) {
                 selected_nodes.add(obj.id); //add it to the list
                 obj.classList.add("select_node"); //add the css property of selected
                 Select_Node_Sound.play(); //Select Node play
-                insert_row_with_data(obj.id);
+                insert_row_with_data(obj.id, "Selected_Nodes_table");
                 no_of_delivery_locations_selected++;
                 document.getElementById("No_of_Delivery_Locations").innerHTML = no_of_delivery_locations_selected;
             }
@@ -77,7 +77,7 @@ function Clicked(obj) {
                 document.getElementById("Source").innerHTML = "Source : NULL";
                 obj.classList.remove("Source_Node");
             }
-            else //A new source is selected
+            else //A new source is selecte
             {
                 document.getElementById("src_selected_img").src = Tick_img;
                 if (Source != null) //if previously a source was selected
@@ -118,9 +118,9 @@ function on_selection_type_change(obj) //function called when selection type rad
 function slider_update() //this function updates the state of the driver slider 
 {
     var driver_slider = document.getElementById("Drivers_slider");
-    if (no_of_delivery_locations_selected > 0 && Source != null) //if possible state then enable the sider
+    if (no_of_delivery_locations_selected > 1 && Source != null) //if possible state then enable the sider
     {
-        driver_slider.min = 1; //setting slider minimum value
+        driver_slider.min = 2; //setting slider minimum value
         driver_slider.max = no_of_delivery_locations_selected; //setting slider max value
         driver_slider.disabled = false; //enabling slider
         no_of_drivers_selected = driver_slider.value; //updating no of drivers
@@ -128,7 +128,11 @@ function slider_update() //this function updates the state of the driver slider
     else //if slider needs to be disabled
     {
         driver_slider.min = 0;  //setting slider minimum value
-        driver_slider.max = no_of_delivery_locations_selected; //setting slider max value
+        if(no_of_delivery_locations_selected >= 2)
+          driver_slider.max = no_of_delivery_locations_selected; //setting slider max value
+        else
+            driver_slider.max =0;
+        
         driver_slider.disabled = true;   //disabling the slider
         no_of_drivers_selected = 0;
     }

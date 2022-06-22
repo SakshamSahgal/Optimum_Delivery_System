@@ -40,10 +40,25 @@ body {
 
   #Selection_type_pallet
   {
-    margin-top: 15%;
+    margin-top: 5%;
     margin-left: 1%;
   }
+
+  #Cluster_Generated_pallet
+  {
+    margin-top: 5%;
+    margin-left: 26%;
+  }
+
   #Selected_Nodes_table th, td 
+  {
+      border-radius: 10px;
+      border: 1px solid white;
+      background-color: #96D4D4;
+      text-align: center;
+  }
+
+  #Clusters_generated_table th,td
   {
       border-radius: 10px;
       border: 1px solid white;
@@ -94,6 +109,6 @@ body {
 
   #Start_Simulation
   {
-      margin-top: 30%;
-      margin-left: 30%;
+      margin-top: 5%;
+      margin-left: 17%;
   }

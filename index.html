@@ -1,8 +1,10 @@
 <html>
 <head>
     <title>Graph</title>
+   <!-- // <link rel="FaviconIcon" href="favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
+    
     <link rel="stylesheet" href="CSS/Graphics_update.css">
     <link rel="stylesheet" href="CSS/UI.css">
     <div id="overlay">
@@ -49,6 +51,11 @@
             <div id="Start_Simulation">
                 <button type="button" onclick="find_optimum_paths()" style="font-size:20px;"> Find Optimum Paths</button>
             </div>
+        </div>
+        <div id ="Cluster_Generated_pallet">
+            <table id="Clusters_generated_table">
+                <th> Clusters Generated </th>
+            </table>
         </div>
     </div>
 
@@ -494,5 +501,6 @@
         <script src="Scripts/Floyd_Warshal_Script.js"></script>
         <script src="Scripts/graph_visualize.js"></script>
         <script src="Scripts/clustering.js"></script>
+        <script src="Scripts/Display_Results.js"></script>
 </body>
 </html>
