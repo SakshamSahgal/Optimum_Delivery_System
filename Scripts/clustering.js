@@ -2,8 +2,8 @@
 class Greedy_Cluster {
     constructor() {
         this.clusters = new Map();
-        this.delivery_locations = selected_nodes;
-        this.rem_delivery_locations = selected_nodes;
+        this.delivery_locations = new Set();
+        this.rem_delivery_locations = new Set();
         this.cluster_initializers = new Set();
     }
 
@@ -11,12 +11,23 @@ class Greedy_Cluster {
 
     calc_cluster_initilizers() //this function finds the initial two cluster initilizers
     {
+
+        for(const i of selected_nodes)
+        this.delivery_locations.add( i.split("_")[1] );
+
+       this.rem_delivery_locations = this.delivery_locations;
+    
+
         var maxx_distance = -10000;
         var a = -1;
         var b = -1;
 
-        for (const i of this.delivery_locations) {
-            for (const j of this.delivery_locations) {
+        for(const i of this.delivery_locations)
+            console.log(i);
+        console.log("\n");
+
+        for (var i of this.delivery_locations) {
+            for (var j of this.delivery_locations) {
                 
                 if (i != j) {
                     console.log(" i = " + i + " j = " + j + " distance = " + this_graph.all_pair_shortest_distance.get(i,j) );    
