@@ -1,5 +1,5 @@
 
-function Highlight_Clusters(obj)
+function Highlight_Clusters(obj) //this function is called when we hover over a cell in the table and highlights both the cluster and cell row
 {
     if(document.getElementById(obj.id).classList.contains("table_cell_highlight") == false)
        document.getElementById(obj.id).classList.add("table_cell_highlight");
@@ -13,7 +13,7 @@ function Highlight_Clusters(obj)
     }
 }
 
-function Un_Highlight_Clusters(obj)
+function Un_Highlight_Clusters(obj) //this function is called when we leave from hover over a cell in the table and un_highlights both the cluster and cell row
 {
     if(document.getElementById(obj.id).classList.contains("table_cell_highlight") == true)
         document.getElementById(obj.id).classList.remove("table_cell_highlight");
@@ -28,7 +28,6 @@ function Un_Highlight_Clusters(obj)
 }
 
 
-
 function display_clusters_generated(Calc_cluster) //display the clusters generated in the table
 {
     var table = document.getElementById("Clusters_generated_table");
@@ -37,23 +36,15 @@ function display_clusters_generated(Calc_cluster) //display the clusters generat
         table.deleteRow(1);
       }
 
-    for(const [key,val] of Calc_cluster.clusters)
-    {
-        console.log("ye insert karenge = " + key);
-        if(val.length == 0)
-           insert_row_with_data(key,"Clusters_generated_table"); //inserting elements into the table
-        else
-            insert_row_with_data([key,val],"Clusters_generated_table");
-    }
+    for(const grp of Calc_cluster.cluster_groups)  //inserting the array into table row
+        insert_row_with_data(grp,"Clusters_generated_table");
     
     for(var i=1;i<table.rows.length;i++)
     {
          var this_row = table.rows[i];   
          this_row.id = (table.rows[i].cells[0].innerHTML);
          this_row.setAttribute("onmouseover","Highlight_Clusters(this)"); //setting onclick event handler dynamically on each rows
-         this_row.setAttribute("onmouseleave","Un_Highlight_Clusters(this)"); //setting onclick event handler dynamically on each rows
-        
+         this_row.setAttribute("onmouseleave","Un_Highlight_Clusters(this)"); //setting onclick event handler dynamically on each rows   
     }
-
 }
 

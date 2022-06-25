@@ -89,20 +89,15 @@ body {
 
   #Welcome_Pallet
   {
-    position: relative;
       border-radius: 10px;
-      width: 25%;
-      height: 25%;
-      background-color: rgba(255, 255, 255, 0.329);
-      margin-left: 40%;
-      margin-top: 20%;
+      margin-left: 30%;
+      margin-top: 8%;
   }
 
   #start_button_pallet
   {
-    position: absolute;
-    margin-top: 20%;
-    margin-left: 40%;
+    margin-top: 1%;
+    margin-left: 23%;
   }
 
   #Start_Simulation

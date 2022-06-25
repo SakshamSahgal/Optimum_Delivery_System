@@ -14,6 +14,7 @@ class Typed_2D_Array //a class for creating a typed 2d array (this array only st
     {
         this.i = parseInt(i);
         this.j = parseInt(j);
+        //console.log("distance btw = " + this.i + " and " + this.j + "is = " + ( this.a[ ( (this.i)*(this.col) + (this.j) ) ] ));
         return ( this.a[ ( (this.i)*(this.col) + (this.j) ) ] );
     }
 

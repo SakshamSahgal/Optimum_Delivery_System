@@ -29,7 +29,7 @@ class Visualize
              this.highlight_node(path[i]);
             var v1 = path[i];
             var v2 = path[i+1];
-            var edge_no = Edge_List.get(v1,v2);
+            var edge_no = Edge_List.get(v1,v2); //finds the edge between vertex v1 and v2 
             var w = this_graph.adjacency_matrix.get(v1,v2);
            // console.log("path btw " + v1 + " and " + v2 + " connected by " + edge_no + " with weight " + w);
            this.highlight_edge(edge_no,v1,v2,w);
