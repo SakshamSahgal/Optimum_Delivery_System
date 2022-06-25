@@ -4,8 +4,11 @@ class Greedy_Cluster {
         this.clusters = new Map(); //this is a map of array that has key as cluster initializer
         this.delivery_locations = new Set();
         this.rem_delivery_locations = new Set();
-        this.cluster_initializers = new Set();
+        this.cluster_initializers = new Set(); //set of cluster initializer
         this.cluster_groups = new Array(); //variable that stores the clusters in a array of array
+        this.path = new Array();
+        this.src = (Source.split("_"))[1];
+        console.log("SRC = " + this.src);
     }
 
 
@@ -13,11 +16,10 @@ class Greedy_Cluster {
     calc_cluster_initilizers() //this function finds the initial two cluster initilizers
     {
         for(const i of selected_nodes)
-        this.delivery_locations.add( i.split("_")[1] );
+        this.delivery_locations.add( i.split("_")[1] ); //converting Node_x to x and pushing it to delivery_locations
 
        this.rem_delivery_locations = this.delivery_locations;
     
-
         var maxx_distance = -10000;
         var a = -1;
         var b = -1;
@@ -38,6 +40,7 @@ class Greedy_Cluster {
                 }
             }
         }
+
         //console.log("farthest points = " + a + " " + b);
         this.cluster_initializers.add(a);
         this.cluster_initializers.add(b);
@@ -126,20 +129,46 @@ class Greedy_Cluster {
         console.log("After -> ");
         for(const i of this.cluster_groups)
            console.log(i);
+        
+        this.generate_path_from_cluster();
     }
 
     Sort_Clusters()
     {
-        
         for(var val of this.cluster_groups)
             val.sort(function(a, b){   //using comparator function to sort vertexes of the clusters on the basis of distances from source so the nearest one is visited first
-                var src = (Source.split("_"))[1];
+                var src = (Source.split("_"))[1]; //since we cant use a global variable in comparator function (so i have to make a copy)
                 var da = this_graph.all_pair_shortest_distance.get(a,src);
                 var db = this_graph.all_pair_shortest_distance.get(b,src);
                 //console.log(da + " " + db);
                 return da-db});
     }
 
+    generate_path_from_cluster() //this function generates a path vertex from cluster
+    {       
+        for(var i=0;i<this.cluster_groups.length;i++)
+        {
+            var temp = new Array();
+            temp.push(this.src);
+            for(var j=0;j<(this.cluster_groups[i]).length;j++)
+            {
+                if(j == 0)
+                    temp = temp.concat(this_graph.calc_path(this.src,this.cluster_groups[i][j]));
+                else
+                {
+                    temp.push(this.cluster_groups[i][j-1]);
+                    temp = temp.concat(this_graph.calc_path(this.cluster_groups[i][j-1],this.cluster_groups[i][j]));
+                }
+            }
+            temp.push(this.cluster_groups[i][(this.cluster_groups[i]).length-1]);
+            this.path.push(temp);
+        }
+
+        console.log("path generated = ");
+        for(var i=0;i<this.path.length;i++)
+           console.log(this.path[i]);
+        
+    } 
 };
 
 
