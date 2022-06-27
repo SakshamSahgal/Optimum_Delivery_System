@@ -4,19 +4,21 @@
    <!-- // <link rel="FaviconIcon" href="favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
-    
     <link rel="stylesheet" href="CSS/Graphics_update.css">
     <link rel="stylesheet" href="CSS/UI.css">
     <div id="overlay">
         <div id="Welcome_Pallet">
-                <img src="Welcome_Board.png" alt="">
+                <img src="" alt="" id="Board">
             <div id="start_button_pallet">
                 <button type="button" onclick="reveal()">Click Me!</button>
-            </div>
-            
+            </div>   
+        </div>
     </div>
+    <div id = "Driver_Details_Card">
+        <p align="Center" id = "Driver Name">Driver Name = </p>
+        <p align="Center" id = "Delivery_location">Deliver_Locations =</p>
     </div>
-       
+
     <div id="Debug">
         <div>
             <h3 align="Center">DEBUG</h3>
@@ -24,6 +26,7 @@
             <p align="Center" id="Connected_by">Connected By = NULL</p>
             <p align="Center" id="Source">Source : NULL</p>
             <p align="Center" id="no_of_Drivers_debug">Number of Drivers = 0</p>
+            <p align="Center" id="Minimum_time">Mini_Time_possible = NOT Calculated Yet</p>
         </div>
         <table id="Selected_Nodes_table">
             <th>[Currently Selected delivery Locations] </th>
@@ -57,7 +60,6 @@
                 <th>Drivers Path Generated</th>
             </table>
     </div>
-
     <svg viewBox="0 0 1090 872" fill="none" xmlns="http://www.w3.org/2000/svg" id="MAP">
         <g id="MAP">
         <g id="Props">

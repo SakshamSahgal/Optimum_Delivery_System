@@ -43,13 +43,15 @@ function display_clusters_generated(Calc_cluster) //display the clusters generat
     {
          var this_row = table.rows[i];   
          this_row.id = (table.rows[i].cells[0].innerHTML);
-         this_row.setAttribute("onmouseover","Highlight_Clusters(this)"); //setting onclick event handler dynamically on each rows
-         this_row.setAttribute("onmouseleave","Un_Highlight_Clusters(this)"); //setting onclick event handler dynamically on each rows   
+         this_row.setAttribute("onmouseover","Highlight_Clusters(this)"); //setting onmouseover event handler dynamically on each rows
+         this_row.setAttribute("onmouseleave","Un_Highlight_Clusters(this)"); //setting onmouseleave event handler dynamically on each rows   
     }
 }
 
 function Highlight_path(this_path)
 {
+    if(document.getElementById(this_path.id).classList.contains("table_cell_highlight") == false)
+       document.getElementById(this_path.id).classList.add("table_cell_highlight");
     console.log(this_path.id);
     var path = this_path.id.split(",");
     vis.show_path(path);
@@ -57,6 +59,8 @@ function Highlight_path(this_path)
 
 function Un_Highlight_path(this_path)
 {
+    if(document.getElementById(this_path.id).classList.contains("table_cell_highlight") == true)
+    document.getElementById(this_path.id).classList.remove("table_cell_highlight");
    var path = (this_path.id).split(",");
    vis.un_highlight_path(path);
    
@@ -79,4 +83,11 @@ function display_paths(Calc_cluster) //display the clusters generated , in the t
              this_row.setAttribute("onmouseleave","Un_Highlight_path(this)"); //setting onclick event handler dynamically on each rows   
         }
 
+}
+
+function Update_Driver_Card(driver) //this function is called when we hover over a driver name
+{
+    //var index = driver
+    document.getElementById("Driver_Details_Card").hidden = false;
+    document.getElementById("Delivery_location").innerHTML = "Delivery_location = "; 
 }

@@ -6,7 +6,7 @@ class Greedy_Cluster {
         this.rem_delivery_locations = new Set();
         this.cluster_initializers = new Set(); //set of cluster initializer
         this.cluster_groups = new Array(); //variable that stores the clusters in a array of array
-        this.path = new Array();
+        this.path = new Array(); //array of array to store clusters
         this.src = (Source.split("_"))[1];
         console.log("SRC = " + this.src);
     }
@@ -172,7 +172,7 @@ class Greedy_Cluster {
 };
 
 
-// function set_dummy_Data() {
+// function set_dummy_Data() {  //used dummy data for testing puroposes
 //     selected_nodes.add(10);
 //     selected_nodes.add(20);
 //     selected_nodes.add(30);
@@ -190,8 +190,10 @@ function find_optimum_paths()  //this function is called when we click on genera
     //set_dummy_Data();
     if (Source != null && no_of_drivers_selected >= 2 && no_of_delivery_locations_selected >= 2) {
         //alert("yes we can go");
+        Overlay.show_please_note();
         var Calc_cluster = new Greedy_Cluster();
         Calc_cluster.calc_cluster_initilizers();
+        document.getElementById("Minimum_time").innerHTML = "Mini_Time_possible = ";
         document.getElementById("Clusters_generated_table").hidden = false;  //unhiding the Clusters_generated_table table 
         document.getElementById("Drivers_path").hidden = false;   //unhiding the Drivers_path table 
         display_clusters_generated(Calc_cluster);

@@ -1,7 +1,6 @@
 
 class Visualize
 {
-    
     highlight_edge(edge_no,v1,v2,w) //this function highlight a edge whose edgeno v1 v2 and weight is passed into it
     {
         var id1 = "Edge_" + edge_no + "_" + v1 + "_" + v2 + "_" + w; 

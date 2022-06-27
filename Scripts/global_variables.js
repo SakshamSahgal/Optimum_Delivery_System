@@ -37,6 +37,31 @@ class Typed_2D_Array //a class for creating a typed 2d array (this array only st
     }
 };
 
+class Overlay_decide
+{
+    constructor() 
+    {
+        document.getElementById("overlay").hidden = false;
+        this.board = document.getElementById("Board");
+    }
+
+    show_entry_overlay()
+    {
+        document.getElementById("overlay").hidden = false;
+        this.board.src = welcome_img;
+        
+    }
+
+    show_please_note()
+    {
+        document.getElementById("overlay").hidden = false;
+        this.board.src = Please_note;
+    }
+}
+
+
+var welcome_img = "GUI_Resources/Welcome_Board.png";
+var Please_note = "GUI_Resources/Please_Note.png";
 var graph = []; //variable that contails the weighted graph 
 var selected_nodes = new Set(); //this set stores a list of selected nodes
 var Click_audio = new Audio("Select_Sound.wav");
@@ -48,3 +73,7 @@ var no_of_drivers_selected = 0;
 var cross_img = "GUI_Resources/Cross.png";
 var Tick_img = "GUI_Resources/Tick.png";
 var Edge_List = new Typed_2D_Array(199,199,0); //stores the edge no between v1 and v2 (used to highlight and unhighlight edges)
+
+
+var Overlay = new Overlay_decide();
+Overlay.show_entry_overlay();
