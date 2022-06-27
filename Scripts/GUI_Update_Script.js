@@ -39,7 +39,7 @@ function Debug_Details(obj) //this function debugs the details of the object tha
     }
     document.getElementById("no_of_Drivers_debug").innerHTML = "Number of Drivers = " + no_of_drivers_selected;
 }
-function Clicked(obj) {
+function Clicked(obj) { //clicked on any node [selectable]
     if (current_selection_type == "Delivery_location") //for selecting delivery locations
     {
         if (obj.id == Source) //this node is already selected as a source

@@ -185,14 +185,17 @@ class Greedy_Cluster {
 
 
 
-function find_optimum_paths() {
+function find_optimum_paths()  //this function is called when we click on generate optimum path 
+{
     //set_dummy_Data();
     if (Source != null && no_of_drivers_selected >= 2 && no_of_delivery_locations_selected >= 2) {
         //alert("yes we can go");
         var Calc_cluster = new Greedy_Cluster();
         Calc_cluster.calc_cluster_initilizers();
-        document.getElementById("Clusters_generated_table").hidden = false;
+        document.getElementById("Clusters_generated_table").hidden = false;  //unhiding the Clusters_generated_table table 
+        document.getElementById("Drivers_path").hidden = false;   //unhiding the Drivers_path table 
         display_clusters_generated(Calc_cluster);
+        display_paths(Calc_cluster);
     }
     else
         alert("Please make sure you have selected - \n> Atleast two delivery locations \n> Atleast two drivers \n> A source");

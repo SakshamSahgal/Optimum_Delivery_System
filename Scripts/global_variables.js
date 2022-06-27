@@ -47,4 +47,4 @@ var no_of_delivery_locations_selected = 0; //variable that tells the no of deliv
 var no_of_drivers_selected = 0;
 var cross_img = "GUI_Resources/Cross.png";
 var Tick_img = "GUI_Resources/Tick.png";
-var Edge_List = new Typed_2D_Array(199,199,0);
+var Edge_List = new Typed_2D_Array(199,199,0); //stores the edge no between v1 and v2 (used to highlight and unhighlight edges)

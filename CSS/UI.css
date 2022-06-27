@@ -62,6 +62,13 @@ body {
       text-align: center;
   }
 
+  #Drivers_path
+  {
+      border-radius: 10px;
+      border: 1px solid white;
+      background-color: #96D4D4;
+      text-align: center;
+  }
   
   #Selection_type_table th , td
   {

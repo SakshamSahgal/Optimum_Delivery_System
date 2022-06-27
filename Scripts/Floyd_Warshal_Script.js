@@ -123,4 +123,4 @@ class Shortest_path_finder {
 
 var this_graph = new Shortest_path_finder(graph);
 
-console.log(this_graph.get_path(2,6));
+//console.log(this_graph.get_path(2,6));
