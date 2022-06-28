@@ -6,6 +6,9 @@
 
 #Driver_Details_Card
 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   width: 200px;
   height: 200px;
   margin-top: 1%;
@@ -13,6 +16,7 @@
   background-color: #96D4D4;
   border-style: dotted dashed solid double;
   z-index: 1;
+  overflow: auto;
   position: absolute;
 }
 
