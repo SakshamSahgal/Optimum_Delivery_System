@@ -178,16 +178,19 @@ class Driver
         this.name = name;
         this.path = path;
         this.cluster = cluster;
+        this.time = 0;
+        this.dist = 0;
+        this.calc_minimum_time();
     }
 
     calc_minimum_time()
     {
         for(var i=0;i < this.path.length - 1 ;i++)
         {
-
+            this.time += this_graph.adjacency_matrix.get(this.path[i],this.path[i+1]);
+            this.dist += this_graph.adjacency_matrix.get(this.path[i],this.path[i+1]);
         }
     }
-
 };
 
 
@@ -211,7 +214,7 @@ function find_optimum_paths()  //this function is called when we click on genera
         var Calc_cluster = new Greedy_Cluster(); //calculating clusters 
         Calc_cluster.calc_cluster_initilizers(); 
         var drivers_map = new Map(); //creating a map of drivers (key-> name val-> driver class object)
-
+        var max_time = -10000;
         for(var i=0;i<no_of_drivers_selected;i++)
         {
             var driver_name = "Driver_" + (i+1);
@@ -219,14 +222,17 @@ function find_optimum_paths()  //this function is called when we click on genera
             var driver_cluster = Calc_cluster.cluster_groups[i];
             var this_driver = new Driver(driver_name,driver_path,driver_cluster);
             drivers_map.set(driver_name,this_driver);
+            if(this_driver.time > max_time)
+                max_time = this_driver.time;
         }
         
+        console.log("max time = " + max_time);
         debug_driver_Map(drivers_map);
-
-        document.getElementById("Minimum_time").innerHTML = "Mini_Time_possible = ";
+        
+        
+        document.getElementById("Minimum_time").innerHTML = "Mini_Time_possible = " + max_time;
         document.getElementById("Clusters_generated_table").hidden = false;  //unhiding the Clusters_generated_table table 
         document.getElementById("Drivers_path").hidden = false;   //unhiding the Drivers_path table 
-        
         display_clusters_generated(Calc_cluster); //display the clusters generated , in the table
         display_Drivers(Calc_cluster,drivers_map); //display the drivers generated , in the table
     }

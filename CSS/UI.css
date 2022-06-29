@@ -3,23 +3,21 @@
     width: 840px;
     height: 730px;
 }
-
-#Driver_Details_Card
-{
+#Driver_Details_Card {
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 200px;
-  height: 200px;
-  margin-top: 1%;
-  margin-left: 22%;
-  background-color: #96D4D4;
   border-style: dotted dashed solid double;
+  width: 300px;
+  height: 200px;
   z-index: 1;
+  background-color: #96D4D4;
+  display: flex;
+  flex-direction: column;
+  min-height: 97vh;
   overflow: auto;
   position: absolute;
 }
-
 body {
     background-color: 63D6C8;
   }
@@ -126,4 +124,17 @@ body {
   {
       margin-top: 5%;
       margin-left: 17%;
+  }
+
+  #bottom_bar
+  {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    margin-left: 24%;
+    background-color: rgba(51, 99, 94, 0.564);
+
+
+    z-index: 2;
   }

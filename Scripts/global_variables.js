@@ -48,8 +48,7 @@ class Overlay_decide
     show_entry_overlay()
     {
         document.getElementById("overlay").hidden = false;
-        this.board.src = welcome_img;
-        
+        this.board.src = welcome_img; 
     }
 
     show_please_note()
@@ -73,7 +72,6 @@ var no_of_drivers_selected = 0;
 var cross_img = "GUI_Resources/Cross.png";
 var Tick_img = "GUI_Resources/Tick.png";
 var Edge_List = new Typed_2D_Array(199,199,0); //stores the edge no between v1 and v2 (used to highlight and unhighlight edges)
-
 
 var Overlay = new Overlay_decide();
 Overlay.show_entry_overlay();

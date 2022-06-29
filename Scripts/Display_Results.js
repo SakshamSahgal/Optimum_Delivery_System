@@ -52,12 +52,22 @@ function display_clusters_generated(Calc_cluster) //display the clusters generat
 
 function Highlight_path(this_Driver)
 {
+    document.getElementById("Debug").style = "display: none;" //hiding the debug pallet to make space
+
     document.getElementById("Driver_Details_Card").style = ""; //unhide card
 
-    document.getElementById("Driver_Name").innerHTML = "Driver Name = " + local_Driver_map.get(this_Driver.id).name;
+    document.getElementById("Driver_Name").innerHTML = "Driver Name = " + local_Driver_map.get(this_Driver.id).name; //updating Driver Card Details
 
-    document.getElementById("Delivery_location").innerHTML = "Deliver_Locations = " + local_Driver_map.get(this_Driver.id).cluster;
+    document.getElementById("Delivery_location").innerHTML = "Deliver_Locations = " + local_Driver_map.get(this_Driver.id).cluster; //updating Driver Card Details
     
+    var time_dist = (local_Driver_map.get(this_Driver.id).time);
+
+    document.getElementById("Distance_Travelled").innerHTML = "Distance_Travelled = " + time_dist; //updating Driver Card Details
+
+    document.getElementById("Time_taken").innerHTML = "Time_taken = " + time_dist; //updating Driver Card Details
+
+    console.log("calculated = " + time_dist ); 
+
     if(document.getElementById(this_Driver.id).classList.contains("table_cell_highlight") == false)
        document.getElementById(this_Driver.id).classList.add("table_cell_highlight");
 
@@ -66,9 +76,12 @@ function Highlight_path(this_Driver)
 
 function Un_Highlight_path(this_path)
 {
+    document.getElementById("Debug").style = ""; //unhiding the debug pallet 
+
    document.getElementById("Driver_Details_Card").style ="display: none;"; //hide card
+
    if(document.getElementById(this_path.id).classList.contains("table_cell_highlight") == true)
-   document.getElementById(this_path.id).classList.remove("table_cell_highlight");
+     document.getElementById(this_path.id).classList.remove("table_cell_highlight");
    
    vis.un_highlight_path(local_Driver_map.get(this_path.id).path); //un_highlight path
 }
