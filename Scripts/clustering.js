@@ -6,7 +6,7 @@ class Greedy_Cluster {
         this.rem_delivery_locations = new Set();
         this.cluster_initializers = new Set(); //set of cluster initializer
         this.cluster_groups = new Array(); //variable that stores the clusters in a array of array
-        this.path = new Array(); //array of array to store clusters
+        this.path = new Array(); //array of array to store path
         this.src = (Source.split("_"))[1];
         console.log("SRC = " + this.src);
     }
@@ -107,9 +107,9 @@ class Greedy_Cluster {
             this.rem_delivery_locations.delete(first);
         }
         
-        console.log("Before -> ");
-        for(const [initializer,other] of this.clusters)
-            console.log(initializer,other);
+        // console.log("Before -> ");
+        // for(const [initializer,other] of this.clusters)
+        //     console.log(initializer,other);
         
         for(const [key,val] of this.clusters)
         {
@@ -120,20 +120,20 @@ class Greedy_Cluster {
             this.cluster_groups.push(temp);
         }
         
-        console.log("cluster_groups = ");
+        // console.log("cluster_groups = ");
 
-        for(const i of this.cluster_groups)
-            console.log(i);
+        // for(const i of this.cluster_groups)
+        //     console.log(i);
         
         this.Sort_Clusters();
-        console.log("After -> ");
-        for(const i of this.cluster_groups)
-           console.log(i);
+        // console.log("After -> ");
+        // for(const i of this.cluster_groups)
+        //    console.log(i);
         
         this.generate_path_from_cluster();
     }
 
-    Sort_Clusters()
+    Sort_Clusters() //this function sorts the cluster groups (in accending order) on the basis of distance from source
     {
         for(var val of this.cluster_groups)
             val.sort(function(a, b){   //using comparator function to sort vertexes of the clusters on the basis of distances from source so the nearest one is visited first
@@ -145,7 +145,7 @@ class Greedy_Cluster {
     }
 
     generate_path_from_cluster() //this function generates a path vertex from cluster
-    {       
+    {
         for(var i=0;i<this.cluster_groups.length;i++)
         {
             var temp = new Array();
@@ -166,9 +166,28 @@ class Greedy_Cluster {
 
         console.log("path generated = ");
         for(var i=0;i<this.path.length;i++)
-           console.log(this.path[i]);
-        
+           console.log(this.path[i]);  
     } 
+};
+
+
+class Driver
+{
+    constructor(name,path,cluster)
+    {
+        this.name = name;
+        this.path = path;
+        this.cluster = cluster;
+    }
+
+    calc_minimum_time()
+    {
+        for(var i=0;i < this.path.length - 1 ;i++)
+        {
+
+        }
+    }
+
 };
 
 
@@ -182,24 +201,44 @@ class Greedy_Cluster {
 //     no_of_delivery_locations_selected = 4;
 // }
 
-
-
-
 function find_optimum_paths()  //this function is called when we click on generate optimum path 
 {
     //set_dummy_Data();
     if (Source != null && no_of_drivers_selected >= 2 && no_of_delivery_locations_selected >= 2) {
         //alert("yes we can go");
-        Overlay.show_please_note();
-        var Calc_cluster = new Greedy_Cluster();
-        Calc_cluster.calc_cluster_initilizers();
+
+        Overlay.show_please_note(); //showing please note overlay
+        var Calc_cluster = new Greedy_Cluster(); //calculating clusters 
+        Calc_cluster.calc_cluster_initilizers(); 
+        var drivers_map = new Map(); //creating a map of drivers (key-> name val-> driver class object)
+
+        for(var i=0;i<no_of_drivers_selected;i++)
+        {
+            var driver_name = "Driver_" + (i+1);
+            var driver_path = Calc_cluster.path[i];
+            var driver_cluster = Calc_cluster.cluster_groups[i];
+            var this_driver = new Driver(driver_name,driver_path,driver_cluster);
+            drivers_map.set(driver_name,this_driver);
+        }
+        
+        debug_driver_Map(drivers_map);
+
         document.getElementById("Minimum_time").innerHTML = "Mini_Time_possible = ";
         document.getElementById("Clusters_generated_table").hidden = false;  //unhiding the Clusters_generated_table table 
         document.getElementById("Drivers_path").hidden = false;   //unhiding the Drivers_path table 
-        display_clusters_generated(Calc_cluster);
-        display_paths(Calc_cluster);
+        
+        display_clusters_generated(Calc_cluster); //display the clusters generated , in the table
+        display_Drivers(Calc_cluster,drivers_map); //display the drivers generated , in the table
     }
     else
         alert("Please make sure you have selected - \n> Atleast two delivery locations \n> Atleast two drivers \n> A source");
 }
 
+
+function debug_driver_Map(driver_Map)
+{
+    for(const [key,val] of driver_Map)
+    {
+        console.log([key,val]);
+    }
+}

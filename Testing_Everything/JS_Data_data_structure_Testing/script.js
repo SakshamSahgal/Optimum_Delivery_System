@@ -81,7 +81,7 @@ console.group("Maps");
 var mp = new Map();
 
 mp.set( "abc" ,  "123") ; //log(n)
-mp.set( 123 ,  "456" ) ; //long(n)
+mp.set( 123 ,  "456" ) ; //log(n)
 mp.set(125,['a','b','c']);
 
 for(const [key,val] of mp)
